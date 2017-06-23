@@ -1,0 +1,60 @@
+group 'springUpload'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+def defaultEncoding = 'UTF-8'
+
+repositories {
+    maven { url "https://mvnrepository.com" }
+    mavenLocal()
+    mavenCentral()
+}
+
+List servlet = ['javax.servlet:javax.servlet-api:3.1.0']
+
+List apache_commons = [
+        "commons-codec:commons-codec:1.9",
+        "commons-io:commons-io:2.5",
+        "org.apache.commons:commons-lang3:3.4"
+]
+
+List junit = ["junit:junit:4.11"]
+
+List logger = [
+        'org.apache.logging.log4j:log4j-api:2.1',
+        'org.apache.logging.log4j:log4j-core:2.1',
+        'org.apache.logging.log4j:log4j-slf4j-impl:2.1',
+        'org.apache.logging.log4j:log4j-web:2.1',
+        'org.slf4j:jcl-over-slf4j:1.7.12'
+]
+def spring_version="4.0.5.RELEASE"
+List spring =[
+        "org.springframework:spring-core:$spring_version",
+        "org.springframework:spring-beans:$spring_version",
+        "org.springframework:spring-aop:$spring_version",
+        "org.springframework:spring-context:$spring_version",
+        "org.springframework:spring-context-support:$spring_version",
+        "org.springframework:spring-web:$spring_version",
+        "org.springframework:spring-orm:$spring_version",
+        "org.springframework:spring-aspects:$spring_version",
+        "org.springframework:spring-webmvc:$spring_version",
+        "org.springframework:spring-test:$spring_version"
+]
+List jackson = [
+        'com.fasterxml.jackson.core:jackson-core:2.4.3',
+        'com.fasterxml.jackson.core:jackson-databind:2.4.3',
+        'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.4.3',
+        'net.sf.json-lib:json-lib:2.4:jdk15'
+]
+
+List fastjson = ["com.alibaba:fastjson:1.2.33"]
+
+dependencies {
+    compile apache_commons,junit,servlet,logger,fastjson,spring,jackson
+    runtime apache_commons,servlet,logger,fastjson,spring,jackson
+}
